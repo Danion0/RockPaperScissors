@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+
+let playerScore = 0;
+let compScore = 0;
+let gamecount = 0;
+
+function computerRound(){
+  let CompNum = Math.floor(Math.random() * 3)
+    if (CompNum === 1) {
+      console.log("rock");
+      return "rock"
+    } else if (CompNum === 2) {
+      console.log("paper");
+      return "paper"
+    } else {
+      console.log("scissors");
+      return "scissors"
+    }
+
+}
+
+
+function playRound(playerSelection, computerSelection){
+  let outcome = "";
+  let player = "";
+  let comp = "";
+
+  player = playerSelection;
+  comp = computerSelection;
+  console.log(player);
+
+  if (player === comp) {
+                    outcome = "Draw!";
+                }
+                else if ((player === "rock" && comp === "scissors") || 
+                (player === "scissors" && comp === "paper") || 
+                (player === "paper" && comp === "rock")) {
+                    playerScore++;
+                    outcome = "Player wins";
+                }
+                else {
+                    compScore++;
+                    outcome = "Computer wins";
+                }
+  console.log(outcome);
+  console.log(playerScore);
+  console.log(compScore);
+}
+
+function Game(){
+  gamecount++;
+ 
+  playRound(prompt("Rock, Paper or Scissors").toLowerCase(), computerRound());
+
+  if (gamecount === 5) {
+    if (playerScore > compScore) {
+      console.log("Player is the winner");
+    } else {
+      console.log("Computer is the winner");
+    }
+
+  } else {
+  Game()
+  }
+}
+
+Game();
+
+
+  </script>
+</body>
+</html>
